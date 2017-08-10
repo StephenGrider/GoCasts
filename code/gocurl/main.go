@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 )
 
@@ -13,5 +14,9 @@ func init() {
 }
 
 func main() {
-	fmt.Println("In main func")
+	_, err := http.Get(os.Args[1])
+	if err != nil {
+		fmt.Println("Error:", err)
+		os.Exit(1)
+	}
 }
